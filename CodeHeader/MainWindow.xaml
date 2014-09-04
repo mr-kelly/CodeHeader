@@ -12,7 +12,7 @@
         <Label Content="Folder Path" HorizontalAlignment="Left" Margin="56.087,38.974,0,0" VerticalAlignment="Top"/>
         <Label Content="Search Pattern" HorizontalAlignment="Left" Margin="56.087,98.632,0,0" VerticalAlignment="Top"/>
         <Label Content="Comment Symbols" HorizontalAlignment="Left" Margin="56.086,138.685,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TextBox_CommentContent" HorizontalAlignment="Left" Height="141.827" Margin="56.086,206.252,0,0" TextWrapping="WrapWithOverflow"  Text="&#xD;&#xA;      CosmosEngine - The Lightweight Unity3D Game Develop Framework&#xD;&#xA; &#xD;&#xA;                     Copyright © 2011-2014&#xD;&#xA;                   MrKelly &lt;23110388@qq.com&gt;&#xD;&#xA;              https://github.com/mr-kelly/CosmosEngine&#xD;&#xA;" VerticalAlignment="Top" Width="442.994" Grid.ColumnSpan="2"/>
+        <TextBox AcceptsReturn="True" x:Name="TextBox_CommentContent" HorizontalAlignment="Left" Height="141.827" Margin="56.086,206.252,0,0" TextWrapping="WrapWithOverflow"  Text="&#xD;&#xA;      CosmosEngine - The Lightweight Unity3D Game Develop Framework&#xD;&#xA; &#xD;&#xA;                     Copyright © 2011-2014&#xD;&#xA;                   MrKelly &lt;23110388@qq.com&gt;&#xD;&#xA;              https://github.com/mr-kelly/CosmosEngine&#xD;&#xA;" VerticalAlignment="Top" Width="442.994" Grid.ColumnSpan="2"/>
         <Label Content="Header Comment" HorizontalAlignment="Left" Margin="56.087,175.415,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

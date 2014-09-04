@@ -20,15 +20,10 @@ namespace CodeHeader
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        string CacheSelectedPath = null;
-
         public MainWindow()
         {
             InitializeComponent();
 
-            if (string.IsNullOrEmpty(CacheSelectedPath))
-                CacheSelectedPath = this.TextBox_FolderPath.Text;//GetExeDirPath();
         }
 
         string GetExeDirPath()
@@ -42,14 +37,12 @@ namespace CodeHeader
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
 
-            dialog.SelectedPath = CacheSelectedPath;
             dialog.ShowNewFolderButton = false;
             dialog.ShowDialog();
 
             if (!string.IsNullOrEmpty(dialog.SelectedPath))
             {
-                CacheSelectedPath = dialog.SelectedPath;
-                TextBox_FolderPath.Text = CacheSelectedPath;
+                TextBox_FolderPath.Text = dialog.SelectedPath;
             }
         }
 
@@ -78,7 +71,7 @@ namespace CodeHeader
         }
         private void BtnTryAdd_Click(object sender, RoutedEventArgs e)
         {
-            foreach (string filePath in Directory.GetFiles(CacheSelectedPath, this.TextBox_SearchPattern.Text, SearchOption.AllDirectories))
+            foreach (string filePath in Directory.GetFiles(this.TextBox_FolderPath.Text, this.TextBox_SearchPattern.Text, SearchOption.AllDirectories))
             {
                 string fileTxt = File.ReadAllText(filePath);
 
@@ -109,7 +102,7 @@ namespace CodeHeader
 
         private void BtnTryRemove_Click(object sender, RoutedEventArgs e)
         {
-            foreach (string filePath in Directory.GetFiles(CacheSelectedPath, this.TextBox_SearchPattern.Text, SearchOption.AllDirectories))
+            foreach (string filePath in Directory.GetFiles(this.TextBox_FolderPath.Text, this.TextBox_SearchPattern.Text, SearchOption.AllDirectories))
             {
                 string fileTxt = File.ReadAllText(filePath);
                 bool isExist = CheckCommentExist(ref fileTxt, true);
