@@ -49,7 +49,7 @@ namespace CodeHeader
         bool CheckCommentExist(ref string allTxt, bool removeThem = false)
         {
             bool isExist = false;
-            Regex reg = new Regex(@"//---[\s\S]*//---.*[\r\n]*");
+            Regex reg = new Regex(string.Format(@"{0}---[\s\S]*{0}---.*[\r\n]*", this.TextBox_CommentSymbol.Text));
 
             var match = reg.Match(allTxt);
 
@@ -80,20 +80,20 @@ namespace CodeHeader
                 if (!isExist)
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.AppendLine("//------------------------------------------------------------------------------");
+                    sb.AppendLine(string.Format("{0}------------------------------------------------------------------------------", this.TextBox_CommentSymbol.Text));
                     string[] groupContent = this.TextBox_CommentContent.Text.Split(new string[] { System.Environment.NewLine }, StringSplitOptions.None);
                     foreach (string gc in groupContent)
                     {
                         sb.AppendLine(this.TextBox_CommentSymbol.Text + gc);
                     }
-                    sb.AppendLine("//------------------------------------------------------------------------------");
+                    sb.AppendLine(string.Format("{0}------------------------------------------------------------------------------", this.TextBox_CommentSymbol.Text));
 
                     // Add
                     string comment = sb.ToString();
 
                     fileTxt = comment + fileTxt;
 
-                    File.WriteAllText(filePath, fileTxt);
+                    File.WriteAllText(filePath, fileTxt, Encoding.UTF8);
 
                     Console.WriteLine("Add Comment TO File: " + filePath);
                 }
@@ -109,7 +109,7 @@ namespace CodeHeader
 
                 if (isExist)
                 {
-                    File.WriteAllText(filePath, fileTxt);
+                    File.WriteAllText(filePath, fileTxt, Encoding.UTF8);
                     Console.WriteLine("Remove Comment TO File: " + filePath);
                 }
 
